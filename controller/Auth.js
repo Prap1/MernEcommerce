@@ -1,7 +1,6 @@
 const { User } = require('../model/User');
 const crypto = require('crypto');
 const { sanitizeUser } = require('../services/common');
-
 const jwt = require('jsonwebtoken');
 
 exports.createUser = async (req, res) => {
@@ -47,7 +46,7 @@ exports.loginUser = async (req, res) => {
       httpOnly: true,
     })
     .status(201)
-    .json({id:user.id,role:user.role});
+    .json({id:user.id, role:user.role});
 };
 
 exports.checkAuth = async (req, res) => {

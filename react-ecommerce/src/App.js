@@ -1,4 +1,3 @@
-import { Counter } from './features/counter/Counter';
 import './App.css';
 import Home from './pages/Home';
 import LoginPage from './pages/LoginPage';
@@ -11,7 +10,11 @@ import ProductDetailPage from './pages/ProductDetailPage';
 import Protected from './features/auth/components/Protected';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { checkAuthAsync, selectLoggedInUser, selectUserChecked } from './features/auth/authSlice';
+import {
+  checkAuthAsync,
+  selectLoggedInUser,
+  selectUserChecked,
+} from './features/auth/authSlice';
 import { fetchItemsByUserIdAsync } from './features/cart/cartSlice';
 import PageNotFound from './pages/PageNotFound';
 import OrderSuccessPage from './pages/OrderSuccessPage';
@@ -22,12 +25,13 @@ import Logout from './features/auth/components/Logout';
 import ForgotPasswordPage from './pages/ForgotPasswordPage';
 import ProtectedAdmin from './features/auth/components/ProtectedAdmin';
 import AdminHome from './pages/AdminHome';
-import AdminProductDetailPage from './pages/AminProductDetailPage';
+import AdminProductDetailPage from './pages/AdminProductDetailPage';
 import AdminProductFormPage from './pages/AdminProductFormPage';
 import AdminOrdersPage from './pages/AdminOrdersPage';
 import { positions, Provider } from 'react-alert';
 import AlertTemplate from 'react-alert-template-basic';
 import StripeCheckout from './pages/StripeCheckout';
+
 const options = {
   timeout: 5000,
   position: positions.BOTTOM_LEFT,
@@ -123,7 +127,7 @@ const router = createBrowserRouter([
     ),
   },
   {
-    path: '/orders',
+    path: '/my-orders',
     element: (
       <Protected>
         <UserOrdersPage></UserOrdersPage>{' '}

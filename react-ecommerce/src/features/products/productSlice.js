@@ -19,7 +19,6 @@ const initialState = {
 };
 
 
-
 export const fetchProductByIdAsync = createAsyncThunk(
   'product/fetchProductById',
   async (id) => {
@@ -31,8 +30,8 @@ export const fetchProductByIdAsync = createAsyncThunk(
 
 export const fetchProductsByFiltersAsync = createAsyncThunk(
   'product/fetchProductsByFilters',
-  async ({ filter, sort, pagination,admin }) => {
-    const response = await fetchProductsByFilters(filter, sort, pagination,admin);
+  async ({ filter, sort, pagination, admin }) => {
+    const response = await fetchProductsByFilters(filter, sort, pagination, admin);
     // The value we return becomes the `fulfilled` action payload
     return response.data;
   }
@@ -81,7 +80,6 @@ export const productSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-     
       .addCase(fetchProductsByFiltersAsync.pending, (state) => {
         state.status = 'loading';
       })

@@ -28,8 +28,7 @@ function ProductForm() {
   const params = useParams();
   const selectedProduct = useSelector(selectProductById);
   const [openModal, setOpenModal] = useState(null);
-  const alert=useAlert();
-
+  const alert = useAlert();
   useEffect(() => {
     if (params.id) {
       dispatch(fetchProductByIdAsync(params.id));
@@ -86,13 +85,14 @@ function ProductForm() {
           product.id = params.id;
           product.rating = selectedProduct.rating || 0;
           dispatch(updateProductAsync(product));
-          alert.success('Product updated');
+          alert.success('Product Updated');
+
           reset();
         } else {
           dispatch(createProductAsync(product));
-          reset();
           alert.success('Product Created');
-          //TODO:  on product successfully added clear fields and show a message
+          // TODO: these alerts should check if API failed
+          reset();
         }
       })}
     >
@@ -459,8 +459,7 @@ function ProductForm() {
         dangerAction={handleDelete}
         cancelAction={() => setOpenModal(null)}
         showModal={openModal}
-      ></Modal>
-    }
+      ></Modal>}
     </>
   );
 }
